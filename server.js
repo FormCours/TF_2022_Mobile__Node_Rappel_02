@@ -16,7 +16,8 @@ const server = http.createServer((request, response) => {
 
     // Routing
     if (method === 'GET' && url === '/') {
-        response.end(`
+
+        const body = `
         <!DOCTYPE html>
         <html lang="en">
         <head>
@@ -27,7 +28,9 @@ const server = http.createServer((request, response) => {
             <h1>Hello World</h1>
         </body>
         </html>
-        `);
+    `;
+
+        response.end(body);
     }
     else if (method === 'GET' && productRegex.test(url)) {
         const productId = productRegex.exec(url)
